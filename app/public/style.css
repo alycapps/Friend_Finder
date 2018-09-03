@@ -1,0 +1,33 @@
+body {
+    background-color: #fff176;
+}
+#surveybody {
+    background-color: #e1e2e1;
+}
+
+#header, #footer {
+    background-color: #fff176;
+}
+
+#header {
+    text-align: center;
+    border-bottom: #64ffda solid;
+}
+
+#footer {
+    text-align: right;
+    border-top: #64ffda solid;
+}
+
+.card-header {
+    background-color: #14cba8;
+}
+
+.card-body {
+    background-color: #64ffda;
+}
+
+.btn {
+    background-color:#9effff;
+    color: black;
+}
