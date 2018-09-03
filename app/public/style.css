@@ -8,26 +8,31 @@ body {
 #header, #footer {
     background-color: #fff176;
 }
-
 #header {
     text-align: center;
     border-bottom: #64ffda solid;
 }
-
 #footer {
     text-align: right;
     border-top: #64ffda solid;
 }
-
 .card-header {
     background-color: #14cba8;
+    /* border-bottom: #ffffa8 solid; */
 }
-
 .card-body {
     background-color: #64ffda;
 }
-
 .btn {
     background-color:#9effff;
     color: black;
+    border: #14cba8 solid 1px;
+}
+.btn-info:hover {
+    background-color: #ffffa8;
+    border: #14cba8 solid 1px;
+    color: black;
+}
+.apilink {
+    text-align: right;
 }
