@@ -1,8 +1,8 @@
-module.exports = function(app){
+module.exports = function(app, path){
     //route to all friends
     app.get("/api/friends", function(req, res) {
         console.log("all friends page");
-        res.send("howdy fiends page")
+        res.send("howdy friends page")
     });
 
     //post for incoming survey results
