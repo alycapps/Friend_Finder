@@ -8,6 +8,8 @@
     <base href="/">
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -31,7 +33,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Questions:</h2>
+                        <h3>Basic Info:</h3>
                     </div>
                     <div class="card-body">
                         <form>
@@ -43,21 +45,61 @@
                             <br>
                             <input type="text" id="picloc">
                             <br>
-                            <label for="Q1">On a scale of 1-5, how much do you love Doctor Who?</label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <br>
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="card">
+                        <div class="card-header">
+                            <h3>Questions:</h3>
+                            <p>For the questions below, please answer on a scale of 1-5, with 5 being highly agree and 1 being highly disagree.</p>
+                        </div>
+
+                    <div class="card-body">
+                        <form>
+                            <label for="Q1">I love mornings.</label>
                             <br>
                             <input type="number" id="Q1loc" placeholder="1-5" min="1" max="5">
                             <br>
-                            <label for="Q2">Question 2</label>
+                            <label for="Q2">I prefer the beach to the mountains.</label>
                             <br>
                             <input type="number" id="Q2loc" placeholder="1-5" min="1" max="5">
                             <br>
-                            <label for="Q3">Question 3</label>
+                            <label for="Q3">I would rather have a few best friends, than a lot of good friends.</label>
                             <br>
                             <input type="number" id="Q3loc" placeholder="1-5" min="1" max="5">
                             <br>
-                            <label for="Q4">Question 4</label>
+                            <label for="Q4">I prefer being outside to inside.</label>
                             <br>
                             <input type="number" id="Q4loc" placeholder="1-5" min="1" max="5">
+                            <br>
+                            <label for="Q5">I am a "foodie".</label>
+                            <br>
+                            <input type="number" id="Q5loc" placeholder="1-5" min="1" max="5">
+                            <br>
+                            <label for="Q6">I exercise regularly.</label>
+                            <br>
+                            <input type="number" id="Q6loc" placeholder="1-5" min="1" max="5">
+                            <br>
+                            <label for="Q7">Doctor Who is my favorite show.</label>
+                            <br>
+                            <input type="number" id="Q7loc" placeholder="1-5" min="1" max="5">
+                            <br>
+                            <label for="Q8">I prefer Thanksgiving to Christmas.</label>
+                            <br>
+                            <input type="number" id="Q8loc" placeholder="1-5" min="1" max="5">
+                            <br>
+                            <label for="Q9">I love to read.</label>
+                            <br>
+                            <input type="number" id="Q9loc" placeholder="1-5" min="1" max="5">
+                            <br>
+                            <label for="Q10">I love to travel.</label>
+                            <br>
+                            <input type="number" id="Q10loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <br>
                             <input class="btn btn-info" id="submitbttnloc" type="submit" value="Submit">
@@ -80,8 +122,38 @@
         </div>
     </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="../routing/apiRoutes.js"></script>
+
+    <script>
+        $("#submitbttnloc").on("click", function(event) {
+            event.preventDefault();
+            var friend = {
+                name: $("#nameloc").val(),
+                picture: $("#picloc").val(),
+                scores: [
+                    $("#Q1loc").val(),
+                    $("#Q2loc").val(),
+                    $("#Q3loc").val(),
+                    $("#Q4loc").val(),
+                    $("#Q5loc").val(),
+                    $("#Q6loc").val(),
+                    $("#Q7loc").val(),
+                    $("#Q8loc").val(),
+                    $("#Q9loc").val(),
+                    $("#Q10loc").val(),
+                ]
+            }
+            console.log(friend);
+            
+            $.post("/api/friends", friend)
+                .then(function(data) {
+                console.log(data);
+                alert("friend added");
+            });
+
+        });
+    </script>
 </body>
 </html>
