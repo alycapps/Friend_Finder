@@ -1,3 +1,5 @@
+var friendsArray = require("../data/friends.js");
+
 module.exports = function(app, path){
     //route to all friends
     app.get("/api/friends", function(req, res) {
@@ -10,7 +12,8 @@ module.exports = function(app, path){
         console.log("post friends");
         console.log("you clicked me");
         var friend = req.body;
-        console.log(friend);
+        friendsArray.push(friend);
+        console.log(friendsArray);
         res.json(friend);
     });
 };

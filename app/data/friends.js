@@ -1,6 +1,6 @@
-var friendsArray = {
+var friendsArray = [{
     "name": "Poseidon-Gulliver",
-    "photo": hhh,
+    "photo": "hhh",
     "scores": [
         2,
         1,
@@ -13,5 +13,6 @@ var friendsArray = {
         1,
         3
     ]
-}
+}];
 
+module.exports = friendsArray;
