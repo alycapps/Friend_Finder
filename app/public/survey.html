@@ -145,12 +145,10 @@
                     $("#Q10loc").val(),
                 ]
             }
-            console.log(friend);
             
             $.post("/api/friends", friend)
                 .then(function(data) {
                 console.log(data);
-                alert("friend added");
             });
 
         });
