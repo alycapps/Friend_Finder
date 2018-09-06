@@ -12,19 +12,19 @@ module.exports = function(app, path){
         console.log("post friends");
         console.log("you clicked me");
         user = req.body;
-        // friendsArray.push(user);
-        // res.json(friendsArray);
+        friendsArray.push(user);
+        res.json(friendsArray);
         // res.json(user);
         bestfriends(user);
     });
 };
 
-//function to determine match for user
+//function to sum all differences between user and potential friens
 var totals = [];
 function bestfriends(user) {
     console.log("best friends function ran")
     //calculates the difference in choices for each friend in the array
-    for (var i=0; i <friendsArray.length; i++) {
+    for (var i=0; i <friendsArray.length -1; i++) {
         var count = 0;
         var sum = 0;
         for (var j=0; j<10; j++) {
@@ -42,6 +42,8 @@ function bestfriends(user) {
     }
     findBFF();
 }
+
+//function to calculate which potental friend is the most like the user
 var BFFName;
 var BFFPic;
 function findBFF() {
@@ -53,7 +55,6 @@ function findBFF() {
             BFFName = friendsArray[l].name;
             BFFPic = friendsArray[l].photo;
             console.log("Your new best friend is " + BFFName + "\n" + BFFPic);
-            friendsArray.push(user);
             return displayBFF();
         }
         // else {
@@ -62,6 +63,7 @@ function findBFF() {
     }
 }
 
+//function to display the best match to the user
 function displayBFF() {
-    console.log
+    console.log("donezo")
 }
