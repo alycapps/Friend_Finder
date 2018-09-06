@@ -54,7 +54,6 @@ function findBFF() {
             console.log(friendsArray[l]);
             BFFName = friendsArray[l].name;
             BFFPic = friendsArray[l].photo;
-            console.log("Your new best friend is " + BFFName + "\n" + BFFPic);
             return displayBFF();
         }
         // else {
@@ -65,5 +64,5 @@ function findBFF() {
 
 //function to display the best match to the user
 function displayBFF() {
-    console.log("donezo")
+    console.log(BFFName + BFFPic);
 }

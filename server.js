@@ -7,9 +7,14 @@ var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+
+
 //allow express to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// serve static assets
+app.use(express.static(__dirname + '/app/public'));
 
 //connect to path files
 var htmlRoutes = require('./app/routing/htmlRoutes')(app, path);
