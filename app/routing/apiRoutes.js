@@ -22,19 +22,24 @@ module.exports = function(app, path){
 function bestfriends(user) {
     console.log("best friends function ran")
     var totals = [];
-    var count = 0;
+    //FIX WHAT YOURE DOING LENGTH OF
     for (var i=0; i <friendsArray.length; i++) {
-        var sum = 0;
-        var friendNum = parseInt(friendsArray[count].scores[i]);
-        console.log(friendNum + "friend Number");
-        var userNum = parseInt(user.scores[i]);
-        console.log(userNum + "user number");
-        sum = friendNum - userNum * -1 + sum;
-        console.log(sum, "eachtime");
-        count ++;
-        if (count == friendsArray.length) {
-            totals.push(sum);
-            console.log(sum + "final");
+        var count = 0;
+        for (var j=0; j<10; j++) {
+            var sum = 0;
+            var friendNum = parseInt(friendsArray[i].scores[j]);
+            console.log(friendNum + "friend Number");
+            var userNum = parseInt(user.scores[j]);
+            console.log(userNum + "user number");
+            sum = friendNum - userNum * -1 + sum;
+            console.log(sum, "eachtime");
+            count ++;
+            if (count == 10) {
+                totals.push(sum);
+                console.log(sum + "final");
+                console.log("-----------")
+                console.log(totals + "totals array")
+            }
         }
     }
 
