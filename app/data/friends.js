@@ -1,5 +1,5 @@
 var friendsArray = [{
-    "name": "Poseidon-Gulliver the Cat",
+    "name": "Poseidon the Cat",
     "photo": "../photos/Poseidon.jpg",
     "scores": [
         5,
@@ -7,23 +7,23 @@ var friendsArray = [{
         5,
         5,
         4,
-        2,
+        3,
         3,
         4,
-        1,
+        2,
         3
     ]
 },
 {
-    "name": "Perseus-Geppetto the Cat",
+    "name": "Perseus the Cat",
     "photo": "../photos/Perseus.jpg",
     "scores": [
-        5,
+        3,
         1,
         1,
         2,
-        5,
-        5,
+        4,
+        4,
         4,
         1,
         3,
