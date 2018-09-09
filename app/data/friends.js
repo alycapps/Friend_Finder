@@ -1,6 +1,6 @@
 var friendsArray = [{
     "name": "Poseidon the Cat",
-    "photo": "../photos/Poseidon.jpg",
+    "photo": "../public/photos/Poseidon.jpg",
     "scores": [
         5,
         4,
@@ -16,7 +16,7 @@ var friendsArray = [{
 },
 {
     "name": "Perseus the Cat",
-    "photo": "../photos/Perseus.jpg",
+    "photo": "../public/photos/Perseus.jpg",
     "scores": [
         3,
         1,
@@ -32,7 +32,7 @@ var friendsArray = [{
 },
 {
     "name": "Jamili the Giraffe",
-    "photo": "../photos/Jamili.jpg",
+    "photo": "../public/photos/Jamili.jpg",
     "scores": [
         2,
         1,
