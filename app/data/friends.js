@@ -1,7 +1,7 @@
 //Array of possible matches for user
 var friendsArray = [{
     "name": "Poseidon the Cat",
-    "photo": "../public/photos/Poseidon.jpg",
+    "photo": "./photos/Poseidon2.jpg",
     "scores": [
         5,
         4,
@@ -17,7 +17,7 @@ var friendsArray = [{
 },
 {
     "name": "Perseus the Cat",
-    "photo": "../public/photos/Perseus.jpg",
+    "photo": "./photos/Perseus2.jpg",
     "scores": [
         3,
         1,
@@ -33,7 +33,7 @@ var friendsArray = [{
 },
 {
     "name": "Jamili the Giraffe",
-    "photo": "../public/photos/Jamili.jpg",
+    "photo": "./photos/Jamili2.jpg",
     "scores": [
         2,
         1,

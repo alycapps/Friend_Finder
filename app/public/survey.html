@@ -173,7 +173,8 @@
                 console.log("1st func");
                 console.log(data);
             });
-    
+            
+            //path to display and determine the user's match
             $.get("/api/friends", function(friendsArray) {
                 console.log(friendsArray);
                 
@@ -185,7 +186,7 @@
                 //function to sum all differences between user and potential friends
                 var totals;
                 function bestfriends(user) {
-                    console.log("best friends function ran")
+                    totals = [];
                     //calculates the difference in choices for each friend in the array
                     for (var i=0; i <friendsArray.length -1; i++) {
                         var count = 0;
@@ -195,12 +196,10 @@
                             var userNum = parseInt(user.scores[j]);
                             sum = sum + Math.abs(friendNum - userNum);
                             count ++;
-                            totals = [];
                             if (count == 10) {
+                                console.log("----friend below")
                                 totals.push(sum);
-                                console.log(sum + "final");
-                                console.log(totals + "totals array");
-                                console.log("-----------");
+                                console.log(sum + "sum");
                             }
                         }
                     }
@@ -209,8 +208,9 @@
 
                 //function to calculate which potental friend is the most like the user
                 function findBFF() {
-                    console.log(Math.min(...totals) + "min");
                     var minDiff = Math.min(...totals);
+                    console.log("final");
+                    console.log(totals + "totals");
                     console.log(minDiff + "mindiff");
                     for (var l=0; l<totals.length; l++) {
                         if (minDiff === totals[l]) {
@@ -224,7 +224,7 @@
 
                 //function to display the best match to the user
                 function displayBFF() {
-                    $('.modal-body').text(BFF.name).append("<img src=" + BFF.pic + " alt='Match Pic'>");
+                    $('.modal-body').html("<h3>" + BFF.name + "</h3>").append("<br> <img src=" + BFF.pic + " alt='Match Pic' height='70%' width='70%'>");
                 }   
             });
         });

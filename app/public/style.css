@@ -34,3 +34,6 @@ body {
 .apilink {
     text-align: right;
 }
+img {
+    image-orientation: from-image;
+}
