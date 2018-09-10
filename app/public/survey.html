@@ -151,82 +151,89 @@
     <script>
         $("#submitbttnloc").on("click", function(event) {
             event.preventDefault();
-            // users information is stored into friend variable
-            var friend = {
-                name: $("#nameloc").val(),
-                picture: $("#picloc").val(),
-                scores: [
-                    $("#Q1loc").val(),
-                    $("#Q2loc").val(),
-                    $("#Q3loc").val(),
-                    $("#Q4loc").val(),
-                    $("#Q5loc").val(),
-                    $("#Q6loc").val(),
-                    $("#Q7loc").val(),
-                    $("#Q8loc").val(),
-                    $("#Q9loc").val(),
-                    $("#Q10loc").val(),
-                ]
-            }
-            
-            $.post("/api/friends", friend, function(data) {
-                console.log("1st func");
-                console.log(data);
-            });
-            
-            //path to display and determine the user's match
-            $.get("/api/friends", function(friendsArray) {
-                console.log(friendsArray);
+            if($("#Q1loc").val() && $("#Q2loc").val() && $("#Q3loc").val() && $("#Q4loc").val() && $("#Q5loc").val() && $("#Q6loc").val() && $("#Q7loc").val() && $("#Q8loc").val() && $("#Q9loc").val() && $("#Q10loc").val() && $("#nameloc").val() && $("#picloc").val()) {
+                // users information is stored into friend variable
+                var friend = {
+                    name: $("#nameloc").val(),
+                    picture: $("#picloc").val(),
+                    scores: [
+                        $("#Q1loc").val(),
+                        $("#Q2loc").val(),
+                        $("#Q3loc").val(),
+                        $("#Q4loc").val(),
+                        $("#Q5loc").val(),
+                        $("#Q6loc").val(),
+                        $("#Q7loc").val(),
+                        $("#Q8loc").val(),
+                        $("#Q9loc").val(),
+                        $("#Q10loc").val(),
+                    ]
+                }
                 
-                // BFF variable is used to store match
-                var BFF;
-                var user = friend;
-                bestfriends(user)
+                $.post("/api/friends", friend, function(data) {
+                    console.log("1st func");
+                    console.log(data);
+                });
+                
+                //path to display and determine the user's match
+                $.get("/api/friends", function(friendsArray) {
+                    console.log(friendsArray);
+                    
+                    // BFF variable is used to store match
+                    var BFF;
+                    var user = friend;
+                    bestfriends(user)
 
-                //function to sum all differences between user and potential friends
-                var totals;
-                function bestfriends(user) {
-                    totals = [];
-                    //calculates the difference in choices for each friend in the array
-                    for (var i=0; i <friendsArray.length -1; i++) {
-                        var count = 0;
-                        var sum = 0;
-                        for (var j=0; j<10; j++) {
-                            var friendNum = parseInt(friendsArray[i].scores[j]);
-                            var userNum = parseInt(user.scores[j]);
-                            sum = sum + Math.abs(friendNum - userNum);
-                            count ++;
-                            if (count == 10) {
-                                console.log("----friend below")
-                                totals.push(sum);
-                                console.log(sum + "sum");
+                    //function to sum all differences between user and potential friends
+                    var totals;
+                    function bestfriends(user) {
+                        totals = [];
+                        //calculates the difference in choices for each friend in the array
+                        for (var i=0; i <friendsArray.length -1; i++) {
+                            var count = 0;
+                            var sum = 0;
+                            for (var j=0; j<10; j++) {
+                                var friendNum = parseInt(friendsArray[i].scores[j]);
+                                var userNum = parseInt(user.scores[j]);
+                                sum = sum + Math.abs(friendNum - userNum);
+                                count ++;
+                                if (count == 10) {
+                                    console.log("----friend below")
+                                    totals.push(sum);
+                                    console.log(sum + "sum");
+                                }
+                            }
+                        }
+                        findBFF();
+                    }
+
+                    //function to calculate which potental friend is the most like the user
+                    function findBFF() {
+                        var minDiff = Math.min(...totals);
+                        console.log("final");
+                        console.log(totals + "totals");
+                        console.log(minDiff + "mindiff");
+                        for (var l=0; l<totals.length; l++) {
+                            if (minDiff === totals[l]) {
+                                BFF = {};
+                                BFF.name = friendsArray[l].name;
+                                BFF.pic = friendsArray[l].photo;
+                                return displayBFF();
                             }
                         }
                     }
-                    findBFF();
-                }
 
-                //function to calculate which potental friend is the most like the user
-                function findBFF() {
-                    var minDiff = Math.min(...totals);
-                    console.log("final");
-                    console.log(totals + "totals");
-                    console.log(minDiff + "mindiff");
-                    for (var l=0; l<totals.length; l++) {
-                        if (minDiff === totals[l]) {
-                            BFF = {};
-                            BFF.name = friendsArray[l].name;
-                            BFF.pic = friendsArray[l].photo;
-                            return displayBFF();
-                        }
-                    }
-                }
-
-                //function to display the best match to the user
-                function displayBFF() {
-                    $('.modal-body').html("<h3>" + BFF.name + "</h3>").append("<br> <img src=" + BFF.pic + " alt='Match Pic' height='70%' width='70%'>");
-                }   
-            });
+                    //function to display the best match to the user
+                    function displayBFF() {
+                        $('.modal-title').html("Your new best friend!");
+                        $('.modal-body').html("<h3>" + BFF.name + "</h3>").append("<br> <img src=" + BFF.pic + " alt='Match Pic' height='70%' width='70%'>");
+                    }   
+                });
+            }
+            else {
+                $('.modal-title').html("Please answer all questions");
+                // $('.modal-body').html("Please answer all questions");
+            }
         });
     </script>
 </body>
