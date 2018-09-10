@@ -1,3 +1,4 @@
+//Array of possible matches for user
 var friendsArray = [{
     "name": "Poseidon the Cat",
     "photo": "../public/photos/Poseidon.jpg",

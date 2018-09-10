@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Survey</title>
-    <!-- <base href="/"> -->
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- JQuery -->
@@ -63,46 +62,45 @@
                         <form>
                             <label for="Q1">I love mornings.</label>
                             <br>
-                            <input type="number" id="Q1loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q1loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q2">I prefer the beach to the mountains.</label>
                             <br>
-                            <input type="number" id="Q2loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q2loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q3">I would rather have a few best friends, than a lot of good friends.</label>
                             <br>
-                            <input type="number" id="Q3loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q3loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q4">I prefer being outside to inside.</label>
                             <br>
-                            <input type="number" id="Q4loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q4loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q5">I am a "foodie".</label>
                             <br>
-                            <input type="number" id="Q5loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q5loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q6">I exercise regularly.</label>
                             <br>
-                            <input type="number" id="Q6loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q6loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q7">Doctor Who is my favorite show.</label>
                             <br>
-                            <input type="number" id="Q7loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q7loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q8">I prefer Thanksgiving to Christmas.</label>
                             <br>
-                            <input type="number" id="Q8loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q8loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q9">I love to read.</label>
                             <br>
-                            <input type="number" id="Q9loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q9loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <label for="Q10">I love to travel.</label>
                             <br>
-                            <input type="number" id="Q10loc" placeholder="1(disagree)-5(agree)" min="1" max="5">
+                            <input type="number" id="Q10loc" placeholder="1-5" min="1" max="5">
                             <br>
                             <br>
-                            <!-- <input class="btn btn-info" id="submitbttnloc" type="submit" value="Submit"> -->
                             <button type="button" class="btn btn-info" id="submitbttnloc" data-toggle="modal" data-target="#myModal" value="Submit">
                                     Submit
                                 </button>
@@ -114,16 +112,8 @@
         </div>
         <br>
     </div>
-
-
-
-
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
-    </button> -->
-      
-    <!-- Modal -->
+   
+    <!-- Modal (appears with match after form is submitted) -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -138,15 +128,10 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
         </div>
     </div>
     </div>
-
-
-
-
 
     <!-- Footer -->
     <div class="row">
@@ -162,17 +147,11 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <!-- <script src="../routing/apiRoutes.js"></script> -->
-
-
-
-
-
-
 
     <script>
         $("#submitbttnloc").on("click", function(event) {
             event.preventDefault();
+            // users information is stored into friend variable
             var friend = {
                 name: $("#nameloc").val(),
                 picture: $("#picloc").val(),
@@ -190,94 +169,64 @@
                 ]
             }
             
-            // $.post("/api/friends", friend)
-            //     .then(function(data) {
-            //     console.log("1st func");
-            //     console.log(data);
-
-            // });
             $.post("/api/friends", friend, function(data) {
                 console.log("1st func");
                 console.log(data);
-
             });
     
             $.get("/api/friends", function(friendsArray) {
-                console.log("2nd func");
                 console.log(friendsArray);
+                
+                // BFF variable is used to store match
+                var BFF;
+                var user = friend;
+                bestfriends(user)
 
-var BFF;
-var user = friend;
-bestfriends(user)
-        // .then(function() {
-        //     console.log("then worked");
-        //     res.json(friendsArray + BFFName + BFFPic);
-        //   });
+                //function to sum all differences between user and potential friends
+                var totals;
+                function bestfriends(user) {
+                    console.log("best friends function ran")
+                    //calculates the difference in choices for each friend in the array
+                    for (var i=0; i <friendsArray.length -1; i++) {
+                        var count = 0;
+                        var sum = 0;
+                        for (var j=0; j<10; j++) {
+                            var friendNum = parseInt(friendsArray[i].scores[j]);
+                            var userNum = parseInt(user.scores[j]);
+                            sum = sum + Math.abs(friendNum - userNum);
+                            count ++;
+                            totals = [];
+                            if (count == 10) {
+                                totals.push(sum);
+                                console.log(sum + "final");
+                                console.log(totals + "totals array");
+                                console.log("-----------");
+                            }
+                        }
+                    }
+                    findBFF();
+                }
 
+                //function to calculate which potental friend is the most like the user
+                function findBFF() {
+                    console.log(Math.min(...totals) + "min");
+                    var minDiff = Math.min(...totals);
+                    console.log(minDiff + "mindiff");
+                    for (var l=0; l<totals.length; l++) {
+                        if (minDiff === totals[l]) {
+                            BFF = {};
+                            BFF.name = friendsArray[l].name;
+                            BFF.pic = friendsArray[l].photo;
+                            return displayBFF();
+                        }
+                    }
+                }
 
-//function to sum all differences between user and potential friens
-var totals;
-function bestfriends(user) {
-    console.log("best friends function ran")
-    //calculates the difference in choices for each friend in the array
-    for (var i=0; i <friendsArray.length -1; i++) {
-        var count = 0;
-        var sum = 0;
-        for (var j=0; j<10; j++) {
-            var friendNum = parseInt(friendsArray[i].scores[j]);
-            var userNum = parseInt(user.scores[j]);
-            sum = sum + Math.abs(friendNum - userNum);
-            count ++;
-            totals = [];
-            if (count == 10) {
-                totals.push(sum);
-                console.log(sum + "final");
-                console.log(totals + "totals array");
-                console.log("-----------");
-            }
-        }
-    }
-    findBFF();
-}
-
-//function to calculate which potental friend is the most like the user
-function findBFF() {
-    console.log(Math.min(...totals) + "min");
-    var minDiff = Math.min(...totals);
-    console.log(minDiff + "mindiff");
-    for (var l=0; l<totals.length; l++) {
-        if (minDiff === totals[l]) {
-            BFF = {};
-            // console.log(friendsArray[l]);
-            BFF.name = friendsArray[l].name;
-            BFF.pic = friendsArray[l].photo;
-            return displayBFF();
-        }
-        // else {
-        //     console.log("not a match");
-        // }
-    }
-}
-
-//function to display the best match to the user
-function displayBFF() {
-    $('.modal-body').text(BFF.name);
-    $('.modal-body').append("<img src='" + BFF.pic + "' alt='Match Pic'>");
-
-}
-
-
-
-
-
-
-
-
-
-
-   
+                //function to display the best match to the user
+                function displayBFF() {
+                    $('.modal-body').text(BFF.name).append("<img src=" + BFF.pic + " alt='Match Pic'>");
+                }   
             });
-
         });
     </script>
 </body>
