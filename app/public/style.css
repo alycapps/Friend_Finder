@@ -1,7 +1,7 @@
 body {
     background-color: #fff176;
 }
-#surveybody {
+#surveybody, .modal-body {
     background-color: #e1e2e1;
 }
 #header, #footer {
@@ -15,7 +15,19 @@ body {
     text-align: right;
     border-top: #64ffda solid;
 }
-.card-header {
+.modal-body, .modal-header, .modal-footer {
+    text-align: center;
+}
+.modal-header {
+    text-align: center;
+    border-bottom: #fff176 solid;
+}
+.modal-footer {
+    border-top: #fff176 solid;
+
+}
+
+.card-header, .modal-header, .modal-footer {
     background-color: #14cba8;
 }
 .card-body {
