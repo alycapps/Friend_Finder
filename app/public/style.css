@@ -1,14 +1,12 @@
 body, #surveybody {
-    background-color: #fff176;
-    background-image: url("./photos/6450.jpg");
+    background-image: url("./photos/background.jpg");
     background-size: 25%;
     background-repeat: repeat;
 }
+a {
+    color: black;
+}
 .modal-body {
-    /* background-color: #e1e2e1;
-    background-image: url("./photos/6450.jpg");
-    background-size: 25%;
-    background-repeat: repeat; */
     background-color: #0097cc;
 }
 #header, #footer {
@@ -31,10 +29,10 @@ body, #surveybody {
 }
 .modal-footer {
     border-top: #fff176 solid;
+    background-color: darkslategray;
 }
 
-.card-header, .modal-header, .modal-footer {
-    /* background-color: #fff176; */
+.card-header, .modal-header {
     background-color: darkslategray;
     border-bottom: #fff176 solid;
     color: white;
@@ -49,7 +47,6 @@ body, #surveybody {
 }
 .btn-info:hover {
     background-color: #ffffa8;
-    /* border: #14cba8 solid 1px; */
     color: black;
 }
 .apilink {

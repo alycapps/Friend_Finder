@@ -172,13 +172,12 @@
                 }
                 
                 $.post("/api/friends", friend, function(data) {
-                    console.log("1st func");
-                    console.log(data);
+                    // console.log(data);
                 });
                 
                 //path to display and determine the user's match
                 $.get("/api/friends", function(friendsArray) {
-                    console.log(friendsArray);
+                    // console.log(friendsArray);
                     
                     // BFF variable is used to store match
                     var BFF;
@@ -199,9 +198,7 @@
                                 sum = sum + Math.abs(friendNum - userNum);
                                 count ++;
                                 if (count == 10) {
-                                    console.log("----friend below")
                                     totals.push(sum);
-                                    console.log(sum + "sum");
                                 }
                             }
                         }
@@ -211,9 +208,6 @@
                     //function to calculate which potental friend is the most like the user
                     function findBFF() {
                         var minDiff = Math.min(...totals);
-                        console.log("final");
-                        console.log(totals + "totals");
-                        console.log(minDiff + "mindiff");
                         for (var l=0; l<totals.length; l++) {
                             if (minDiff === totals[l]) {
                                 BFF = {};
